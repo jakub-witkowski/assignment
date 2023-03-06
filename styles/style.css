@@ -1,76 +1,95 @@
 * {
-  font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
-  font-size: 16px;
+    font-family: "segoe ui", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
 }
 
 html {
-  height: 100%;  
-  background-color: #fffff;
+    height: 100%;  
+    background-color: white;
 }
 
 body {
-  width: 80vw;
-  margin: auto;
-  padding: 20px 20px 20px 20px;
+    width: 80vw;
+    margin: auto;
+    padding: 20px 20px 20px 20px;
 
 }
 
 h1 {
-  border-bottom: 1px solid black;
-  font-size: 40px;
-  padding: 10px 0 10px 0;
-  color: black;
+    border-bottom: 1px solid black;
+    font-size: 40px;
+    padding: 10px 0 10px 0;
+    color: black;
 }
 
 .container {
-position: relative;
+    position: relative;
 }
 
 .button-container {
-position: absolute;
-top: 10px;
-right: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .button {
-  padding: 15px 32px;
-  display: inline-block;
+    padding: 15px 32px;
+    display: inline-block;
+}
+
+.form {
+    border-bottom: 1px solid #efefef;
+    margin: 10px;
+    padding-bottom: 10px;
+    width: 320px;
+}
+
+.title {
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.instruction {
+    text-align: center;
+    padding-right: 10px;
 }
 
 input:invalid {
-  border: 2px dashed red;
+    border: 2px dashed red;
 }
 
 input:invalid:required {
-  border: 2px dashed red;
+    border: 2px dashed red;
 }
 
 input:valid {
-  border: 1px solid black;
+    border: 1px solid black;
 }
 
 #grid {
-  padding: 20px;  
-  display: grid;
-  grid-template-columns: 24% 24% 24% 24%; 
-  grid-gap: 10px;
+    padding: 20px;  
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%; 
+    grid-gap: 10px;
 }
 
 .cell {
-  position:relative;
-  padding: 10px;
-  text-align: center;
-  border: 1px solid grey;
+    position:relative;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid grey;
 }
 
 .delete-checkbox {
-  position: absolute;
-  top: 5px;
-  left: 5px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }
 
 footer {
-  text-align: center;
-  padding: 10px 0 10px 0;
-  border-top: 1px solid black;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    border-top: 1px solid black;
 }

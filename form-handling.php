@@ -86,9 +86,9 @@ else {
 if ($result === true) {
     header('Location: index.php');
 }
-/*else {
+else {
 	echo "SQL error." . $mysqli->error;
-}*/
+}
 
 $mysqli->close();
 
