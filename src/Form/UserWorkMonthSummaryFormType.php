@@ -17,10 +17,11 @@ class UserWorkMonthSummaryFormType extends AbstractType
         $builder
             ->add('employee', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'getIdWithName',
+                'label' => 'Unikalny identifikator pracownika: ',
+                'choice_label' => 'getId',
             ])
             ->add('startMonth', TextType::class, [
-                'label' => 'Miesiąc pracy (YYYY-MM): '
+                'label' => 'Data (YYYY-MM): '
             ])
         ;
     }

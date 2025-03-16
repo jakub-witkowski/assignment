@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 final class DaySummaryController extends AbstractController
 {
@@ -25,14 +26,7 @@ final class DaySummaryController extends AbstractController
 
             // Liczba godzin przepracowanych wybranego dnia
             $workHours = $repository->getUserDailyHours($startDay, $employee->getId());
-
-            if ($workHours === 0)
-            {
-                $summary = ['response' => 'W wybranym dniu pracownik nie przepracował żadnych godzin'];
-
-                return new JsonResponse($summary);
-            }
-
+            
             $payment = $workHours * WorkTime::NORMAL_FEE;
 
             $summary = [
