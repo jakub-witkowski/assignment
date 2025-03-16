@@ -9,6 +9,18 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: WorkTimeRepository::class)]
 class WorkTime
 {
+    // należność za nienadliczbową godzinę pracy
+    const NORMAL_FEE = 20;
+
+    // modyfikator stawki nadgodzinowej - 200%
+    const OVERTIME_RATE = 2;
+
+    // miesięczna norma nadgodzin
+    const MONTHLY_NORM = 40;
+
+    // dzienna norma godzin
+
+    const DAILY_NORM = 12;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
