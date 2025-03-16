@@ -17,13 +17,16 @@ class WorkTimeFormType extends AbstractType
         $builder
             ->add('employee', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'getIdWithName',
+                'label' => 'Unikalny identyfikator pracownika: ',
+                'choice_label' => 'getId',
             ])
             ->add('startAt', DateTimeType::class, [
+                'label' => 'Data i godzina rozpoczęcia: ',
                 'widget' => 'single_text',
                 'mapped' => false,
             ] )
             ->add('endAt', DateTimeType::class, [
+                'label' => 'Data i godzina zakończenia: ',
                 'widget' => 'single_text',
                 'mapped' => false,
             ])

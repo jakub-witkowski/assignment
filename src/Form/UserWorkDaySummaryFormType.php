@@ -17,10 +17,11 @@ class UserWorkDaySummaryFormType extends AbstractType
         $builder
             ->add('employee', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'getIdWithName',
+                'label' => 'Unikalny identyfikator pracownika: ',
+                'choice_label' => 'getId',
             ])
             ->add('startDay', TextType::class, [
-                'label' => 'Dzień pracy (YYYY-MM-DD): '
+                'label' => 'Data (YYYY-MM-DD): '
             ])
         ;
     }

@@ -29,4 +29,21 @@ class WorkTimeRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
         ;
     }
+
+    public function getNumberOfHoursInMonthToDate(string $date, string $month, int $employeeId)
+    {
+        $result = $this->createQueryBuilder('workTime')
+            ->select('SUM(workTime.workDuration)')
+            ->where('workTime.startDay < :date')
+            ->setParameter('date', $date)
+            ->andWhere('workTime.startMonth = :month')
+            ->setParameter('month', $month)
+            ->andWhere('workTime.employee = :employeeId')
+            ->setParameter('employeeId', $employeeId)
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+        return WorkTimeRepository::convertToHours($result);
+    }
 }
