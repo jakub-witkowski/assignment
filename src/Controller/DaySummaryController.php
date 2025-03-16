@@ -27,6 +27,7 @@ final class DaySummaryController extends AbstractController
             // Liczba godzin przepracowanych wybranego dnia
             $workHours = $repository->getUserDailyHours($startDay, $employee->getId());
 
+            // Ustalenie należności
             $payment = $workHours * WorkTime::NORMAL_FEE;
 
             $summary = [

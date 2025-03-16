@@ -16,7 +16,7 @@ class WorkTimeRepository extends ServiceEntityRepository
         parent::__construct($registry, WorkTime::class);
     }
 
-    // Zaokrągla czas pracy do wytycznych; wynik zwraca w godzinach
+    // Zaokrągla czas pracy wg wytycznych; wynik zwraca w godzinach
     public function convertToHours($workDurationInMinutes)
     {
         $workDurationInMinutesApproximate = $workDurationInMinutes % 60;

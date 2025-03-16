@@ -14,6 +14,7 @@ class WorkTimeFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Definiowanie pól formularza
         $builder
             ->add('employee', EntityType::class, [
                 'class' => User::class,
@@ -33,6 +34,7 @@ class WorkTimeFormType extends AbstractType
         ;
     }
 
+    // Dowiązanie formularza do encji
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
