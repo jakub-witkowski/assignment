@@ -39,6 +39,8 @@ final class MonthSummaryController extends AbstractController
                 $howManyNormalHours = WorkTime::MONTHLY_NORM;
                 $howManyOvertimeHours = $workHours - WorkTime::MONTHLY_NORM;
             }
+            else
+                $howManyNormalHours = $workHours;
 
             // Ustalenie należności za przepracowane godziny
             if ($howManyOvertimeHours === 0)
