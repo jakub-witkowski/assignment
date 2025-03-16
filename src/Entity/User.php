@@ -61,6 +61,11 @@ class User
         return $this;
     }
 
+    public function getIdWithName(): ?string
+    {
+        return $this->id.': '.$this->firstName.' '.$this->lastName;
+    }
+
     /**
      * @return Collection<int, WorkTime>
      */
