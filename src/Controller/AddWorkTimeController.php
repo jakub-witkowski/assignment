@@ -20,8 +20,7 @@ final class AddWorkTimeController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $startTime = $form->get('startAt')->getData();
             $endTime = $form->get('endAt')->getData();
             $employee = $form->get('employee')->getData();
@@ -39,45 +38,38 @@ final class AddWorkTimeController extends AbstractController
             $isLessThanTwelveHours = false;
 
             // Czy data/godzina zakończenia nie jest wcześniejsza niż data/godzina rozpoczęcia?
-            if ($endTimestamp <= $startTimestamp)
-            {
+            if ($endTimestamp <= $startTimestamp) {
                 $status = [
                     'status' => 'Data/godzina zakończenia jest wcześniejsza niż data/godzina rozpoczęcia'
                 ];
 
                 return $this->json($status);
-            }
-            else
+            } else {
                 $isTimeCorrect = true;
             }
 
             // Zapobiega tworzeniu więcej niż jednego przedziału rozpoczęcia pracy dla danego pracownika
-            if ($repository->checkForStartDay($startTime->format('Y-m-d'), $employee->getId()) > 0)
-            {
+            if ($repository->checkForStartDay($startTime->format('Y-m-d'), $employee->getId()) > 0) {
                 $status = [
                     'status' => 'Dla wskazanego pracownika istnieje już przedział ze wskazanym dniem rozpoczęcia'
                 ];
 
                 return $this->json($status);
-            }
-            else
+            } else
                 $isStartDayCorrect = true;
 
             // Czy długość czasu pracy nie przekracza dziennej normy w godzinach?
-            if ($durationInMinutes > WorkTime::DAILY_NORM * 60)
-            {
+            if ($durationInMinutes > WorkTime::DAILY_NORM * 60) {
                 $status = [
-                    'status' => 'Wybrany przedział jest dłuższy niż '. WorkTime::DAILY_NORM . 'h'
+                    'status' => 'Wybrany przedział jest dłuższy niż ' . WorkTime::DAILY_NORM . 'h'
                 ];
 
                 return $this->json($status);
-            }
-            else
+            } else
                 $isLessThanTwelveHours = true;
 
             // Jeśli wszystkie warunki są spełnione, tworzy nowy obiekt klasy WorkTime
-            if ($isTimeCorrect && $isLessThanTwelveHours && $isStartDayCorrect)
-            {
+            if ($isTimeCorrect && $isLessThanTwelveHours && $isStartDayCorrect) {
                 $workTime = new WorkTime();
 
                 $workTime->setStartTime($startTime);
@@ -97,10 +89,11 @@ final class AddWorkTimeController extends AbstractController
                 return $this->json($status);
             }
 
+        }
 
         return $this->render('add_work_time/index.html.twig', [
             'controller_name' => 'AddWorkTimeController',
             'workTimeForm' => $form->createView(),
         ]);
-    }
+   }
 }
